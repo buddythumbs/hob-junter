@@ -23,6 +23,9 @@ export const MUI_PALETTE = {
 
 export const createCustomTheme = () => {
     return createMuiTheme({
+        typography: {
+            useNextVariants: true,
+        },
         palette: MUI_PALETTE,
         contrastThreshold: 3,
         tonalOffset: 0.2,

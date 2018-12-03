@@ -27,6 +27,13 @@ This app should contain two views:
 
 ## Project structure
 
+Project will use `redux` for state management in addition to `react-router` for routing to both views.
+The actions, reducers and store directories are all boilerplate for redux.
+
+
+The sagas directory is included as `react-saga` will be used to make for better async manmagement store management
+The selectors directory is included as the project will use `reselect` to avoid unecessary expensive re rendering of the application
+
 ```
 ├── README.md
 ├── package-lock.json

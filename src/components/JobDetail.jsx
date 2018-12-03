@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default class JobDetail extends Component {
   static propTypes = {
-    job: PropTypes.object.isRequired
+    // job: PropTypes.object.isRequired
   }
 
   render() {

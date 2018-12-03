@@ -1,41 +1,29 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { createHashHistory } from 'history';
-import { routerMiddleware, routerActions } from 'react-router-redux';
+import { createBrowserHistory } from 'history'
 import { createLogger } from 'redux-logger';
+import { routerMiddleware } from 'connected-react-router'
 import rootReducer from '../reducers';
 import * as jobActions from '../actions/job';
 import * as searchActions from '../actions/search';
 
-const history = createHashHistory();
+export const history = createBrowserHistory()
 
-const configureStore = (initialState) => {
+export const configureStore = () => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
+
   middleware.push(thunk);
-
-  // Logging Middleware
-  const logger = createLogger({
-    level: 'info',
-    collapsed: true
-  });
-
-  middleware.push(logger);
-
-  // Router Middleware
-  const router = routerMiddleware(history);
-  middleware.push(router);
 
   // Redux DevTools Configuration
   const actionCreators = {
     ...jobActions,
     ...searchActions,
-    ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
       // Options: http://zalmoxisus.github.io/redux-devtools-extension/API/Arguments.html
       actionCreators,
@@ -45,17 +33,27 @@ const configureStore = (initialState) => {
 
   // Apply Middleware & Compose Enhancers
   enhancers.push(applyMiddleware(...middleware));
-  const enhancer = composeEnhancers(...enhancers);
+  const store = createStore(
+    rootReducer(history),
+    composeEnhancer(
+      applyMiddleware(
+        routerMiddleware(history),
+      ),
+    ),
+  )
 
-  // Create Store
-  const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers')) // eslint-disable-line global-require
-    );
+    // Reload components
+    module.hot.accept('./App', () => {
+      render()
+    })
+  
+    // Reload reducers
+    module.hot.accept('./reducers', () => {
+      store.replaceReducer(rootReducer(history))
+    })
   }
-
+  
   return store;
 };
-export default { configureStore, history };

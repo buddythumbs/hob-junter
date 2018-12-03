@@ -7,16 +7,15 @@ const initialState = {
     selectedJob: undefined
 }
 
-export const search = (state=initialState,action) => {
-    return switch (action.type) {
+const job = (state=initialState,action) => {
+    switch (action.type) {
         case actions.SET_JOB_ID:
             return state = { selectedJobId: action.payload }
-            break;
         case actions.SET_JOB:
             return state = { selectedJob: action.payload }
-            break;
         default:
             return state
-            break;
     }
 }
+
+export default job;

@@ -7,16 +7,15 @@ const initialState = {
     loadingAutocomplete: false
 }
 
-export const search = (state=initialState,action) => {
-    return switch (action.type) {
+const search = (state=initialState,action) => {
+    switch (action.type) {
         case actions.SET_SEARCH:
             return state = { searchText: action.payload }
-            break;
         case actions.CLEAR_SEARCH:
             return state = { searchText: '' }
-            break;
         default:
             return state
-            break;
     }
 }
+
+export default search;
