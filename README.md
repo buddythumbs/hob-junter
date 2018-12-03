@@ -24,3 +24,42 @@ This app should contain two views:
 ## Deliverables
     1. A URL to a publicly available source code repository on Github (this repo) 
     2. A URL to the publicly available final build on Github pages, AWS S3 or a similar service
+
+## Project structure
+
+```
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── App.js
+    ├── App.test.js
+    ├── actions
+    │   ├── job.js
+    │   └── search.js
+    ├── components
+    │   ├── JobDetail.jsx
+    │   └── Search.jsx
+    ├── containers
+    │   ├── JobPage.jsx
+    │   └── SearchPage.jsx
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── reducers
+    │   ├── index.js
+    │   ├── job.js
+    │   └── search.js
+    ├── sagas
+    ├── selectors
+    ├── serviceWorker.js
+    ├── store
+    │   └── configureStore.js
+    └── utils
+        ├── theme.js
+        └── types.js
+```

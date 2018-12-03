@@ -21,7 +21,7 @@ class App extends Component {
         <MuiThemeProvider theme={muiTheme}>
           <Switch>
             <Route path="/" render={(props) => <SearchHomePage {...props}/>} />
-            <Route path="/:jobId" render={(props) =>  {...props}/>} />
+            <Route path="/:jobId" render={(props) => <JobPage {...props}/>} />
           </Switch>
         </MuiThemeProvider>
       </ConnectedRouter>
