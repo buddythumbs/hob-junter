@@ -11,8 +11,13 @@ import { createCustomTheme } from './utils/theme';
 import './index.css';
 import "typeface-nanum-gothic-coding";
 
+// Globals styles
+import { withStyles } from '@material-ui/core/styles';
+const styles = theme => ({})
 // Create theme 
-const muiTheme = createCustomTheme();
+const muiTheme = createCustomTheme({
+  paletteType: 'dark',
+});
 
 const store = configureStore()
 
@@ -22,8 +27,8 @@ class App extends Component {
       <ConnectedRouter history={history}>
         <MuiThemeProvider theme={muiTheme}>
           <Switch>
+            <Route path="/jobs/:jobId" render={(props) => <JobPage {...props}/>} />
             <Route path="/" render={(props) => <SearchHomePage {...props}/>} />
-            <Route path="/:jobId" render={(props) => <JobPage {...props}/>} />
           </Switch>
         </MuiThemeProvider>
       </ConnectedRouter>
@@ -31,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles, { withTheme: true })(App);

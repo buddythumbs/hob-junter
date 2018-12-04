@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history'
-import { createLogger } from 'redux-logger';
 import { routerMiddleware } from 'connected-react-router'
 import rootReducer from '../reducers';
 import * as jobActions from '../actions/job';
@@ -43,17 +42,5 @@ export const configureStore = () => {
   )
 
 
-  if (module.hot) {
-    // Reload components
-    module.hot.accept('./App', () => {
-      render()
-    })
-  
-    // Reload reducers
-    module.hot.accept('./reducers', () => {
-      store.replaceReducer(rootReducer(history))
-    })
-  }
-  
   return store;
 };

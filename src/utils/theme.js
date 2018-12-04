@@ -9,22 +9,44 @@ export const PALETTE = {
 }
 
 export const MUI_PALETTE = {
-    type: 'dark',
     primary: {
-      main: PALETTE.primary,
+      main: PALETTE.lightPink,
     },
     secondary: {
       main: PALETTE.textColor,
     },
     error: {
       main: PALETTE.lightPink,
-    }
+    },
+    text : { 
+        primary: "rgba(255, 255, 255, 0.87)",
+        secondary: "rgba(255, 255, 255, 0.54)",
+        disabled: "rgba(255, 255, 255, 0.38)",
+        hint: "rgba(255, 255, 255, 0.38)",
+     },
+    divider: '#fff',
 }
 
-export const createCustomTheme = () => {
+export const createCustomTheme = (theme) => {
     return createMuiTheme({
+        type: theme.paletteType,
         typography: {
             useNextVariants: true,
+            fontSize: 12,
+            fontFamily: [
+                'Nanum Gothic Coding', 
+                'monospace', 
+            ].join(',')
+        },
+        background: {
+            default: theme.paletteType === 'dark' ? PALETTE.primary : '#fafafa',
+            paper: theme.paletteType === 'dark' ? PALETTE.secondary : '#fff',
+        },
+        text : { 
+            primary: "rgba(255, 255, 255, 0.87)",
+            secondary: "rgba(255, 255, 255, 0.54)",
+            disabled: "rgba(255, 255, 255, 0.38)",
+            hint: "rgba(255, 255, 255, 0.38)",
         },
         palette: MUI_PALETTE,
         contrastThreshold: 3,

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Search from '../components/Search';
+import JobDetail from '../components/JobDetail';
 import * as jobActions from '../actions/job';
 
 function mapStateToProps(state, props) {
@@ -17,4 +17,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(JobDetail);
