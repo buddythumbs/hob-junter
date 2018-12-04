@@ -2,34 +2,29 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 export const PALETTE = {
     primary: "#1A1A1D",
-    secondary: "#4E4E50",
+    secondary: "#eee",
     darkRed: '#6F2232',
     textColor: '#950740',
     lightPink: '#C3073F'
 }
 
 export const MUI_PALETTE = {
+    type: 'dark',
     primary: {
-      main: PALETTE.lightPink,
+      main: "#65ccb8",
     },
     secondary: {
-      main: PALETTE.textColor,
+      main: "#182628",
     },
     error: {
-      main: PALETTE.lightPink,
+      main: "#529163",
     },
-    text : { 
-        primary: "rgba(255, 255, 255, 0.87)",
-        secondary: "rgba(255, 255, 255, 0.54)",
-        disabled: "rgba(255, 255, 255, 0.38)",
-        hint: "rgba(255, 255, 255, 0.38)",
-     },
-    divider: '#fff',
+    tonalOffset: 0.2,
+    contrastThreshold: 3,
 }
 
 export const createCustomTheme = (theme) => {
     return createMuiTheme({
-        type: theme.paletteType,
         typography: {
             useNextVariants: true,
             fontSize: 12,
@@ -38,18 +33,9 @@ export const createCustomTheme = (theme) => {
                 'monospace', 
             ].join(',')
         },
-        background: {
-            default: theme.paletteType === 'dark' ? PALETTE.primary : '#fafafa',
-            paper: theme.paletteType === 'dark' ? PALETTE.secondary : '#fff',
+        toolbar: {
+            height: 25,
         },
-        text : { 
-            primary: "rgba(255, 255, 255, 0.87)",
-            secondary: "rgba(255, 255, 255, 0.54)",
-            disabled: "rgba(255, 255, 255, 0.38)",
-            hint: "rgba(255, 255, 255, 0.38)",
-        },
-        palette: MUI_PALETTE,
-        contrastThreshold: 3,
-        tonalOffset: 0.2,
+        palette: MUI_PALETTE
     })
 }

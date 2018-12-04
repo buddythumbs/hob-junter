@@ -8,10 +8,6 @@ export default class Search extends Component {
   }
 
   render() {
-    return (
-      <div>
-        This is the search page
-      </div>
-    )
+    return 
   }
 }
