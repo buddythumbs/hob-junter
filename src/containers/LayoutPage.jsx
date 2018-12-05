@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components';
 
 // Components
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 
 // Styled Components
 const Layout = styled.div`
@@ -27,7 +27,6 @@ const Content = styled.div`
 
 export default class LayoutPage extends Component {
   static propTypes = {
-    prop: PropTypes
   }
 
   render() {

@@ -27,7 +27,6 @@ const styles = theme => ({})
 const muiTheme = createCustomTheme({
   paletteType: 'dark',
 });
-console.log(muiTheme);
 
 // Redux store
 const store = configureStore()

@@ -14,7 +14,6 @@ const StyledPaper = styled(Paper)`
 
 export default class Home extends Component {
   static propTypes = {
-    prop: PropTypes
   }
 
   render() {
