@@ -8,19 +8,13 @@ const QUERY_PARAMATERS = {
     "END": 'ends_with',
 }
 
-const getTitleBasedOnString = async (position,term) => {
-    let titles = await axios({
-        method: 'get',
-        url: `${API_ROOT}/jobs/autocomplete`,
-        params: {
-            [QUERY_PARAMATERS[position]]: term
-        }
-    })
-
-    console.log(titles);
-
-    return titles;
+const getTitleBasedOnString = (position,term) => {
+    console.log(position,term);
     
+    return axios({
+        method: 'get',
+        url: `${API_ROOT}/jobs/autocomplete?${QUERY_PARAMATERS[position]}="${term}"`,
+    })
 }
 
 export const DAW_API = {

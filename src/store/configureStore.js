@@ -1,10 +1,21 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
-import { createBrowserHistory } from 'history'
-import { routerMiddleware } from 'connected-react-router'
+import logger from 'redux-logger'
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
+
+// Reducers
 import rootReducer from '../reducers';
+
+// Actions
 import * as jobActions from '../actions/job';
 import * as searchActions from '../actions/search';
+
+// Sagas
+import searchSaga from '../sagas/searchSaga';
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware()
 
 export const history = createBrowserHistory()
 
@@ -36,11 +47,15 @@ export const configureStore = () => {
     rootReducer(history),
     composeEnhancer(
       applyMiddleware(
+        logger,
+        sagaMiddleware,
         routerMiddleware(history),
       ),
     ),
   )
 
+  // then run the saga
+  sagaMiddleware.run(searchSaga)
 
   return store;
 };

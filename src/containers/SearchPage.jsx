@@ -1,11 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Search from '../components/Search/Search';
-import * as jobActions from '../actions/job';
+import * as searchActions from '../actions/search';
 
 function mapStateToProps(state) {
   return {
-    job: state.job,
+    search: state.search,
   };
 }
 
@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    ...jobActions,
+    ...searchActions,
   }, dispatch);
 }
 
