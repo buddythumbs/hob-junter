@@ -1,61 +1,77 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 // Conponents
-
 import KeyWordSearch from './KeyWordSearcher';
 import SearchResults from './SearchResults';
 import AutoComplete from './AutoComplete';
-
-// Utility/helpers
-import { DAW_API } from '../../api/data-at-work-api'
-import { memoize } from '../../utils/memoize'
-
-const getBeginsWith = memoize(DAW_API.AUTOCOMPLETE)
-
-// Styled components
-
-const Main = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  transform: translate(-50%,-50%);
-  font-size: 1.3rem;
-`;
+import JobDetail from '../JobDetail/JobTypeDetail';
+import { Main } from '../../elements/layouts';
 
 export default class Search extends Component {
   static propTypes = {
-    // searchText: PropTypes.string.isRequired,
-    // loadingAutocomplete: PropTypes.bool.isRequired
+    search: PropTypes.shape({
+      searchText: PropTypes.string.isRequired,
+      searchResults: PropTypes.arrayOf(
+        PropTypes.shape({
+          suggestion: PropTypes.string.isRequired,
+          parent_uuid: PropTypes.string.isRequired
+        })
+      ),
+      loadingAutocomplete: PropTypes.bool.isRequired
+    }).isRequired,
+    setSearchText: PropTypes.func.isRequired,
+    searchId: PropTypes.func.isRequired,
+    fetchedJob: PropTypes.bool.isRequired,
+    fetchedJobDetail: PropTypes.shape({
+      description: PropTypes.string.isRequired,
+      onet_soc_code: PropTypes.string.isRequired,
+      related_job_titles: PropTypes.arrayOf(
+        PropTypes.shape({
+          uuid: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired
+        })
+      ),
+      title: PropTypes.string.isRequired,
+      unusual_job_titles: PropTypes.arrayOf(
+        PropTypes.shape({
+          uuid: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired
+        })
+      ),
+      uuid: PropTypes.string.isRequired
+    })
+
   }
 
   handleChangeText = (e) => {
-    console.log(e);
     
     this.props.setSearchText(e)
   }
 
+  handleClickOnTitle = (id) => {
+    
+    this.props.searchId(id)
+    this.props.setSearchText(id)
+  }
+
   render() {
     
-    const { search: {searchText, searchResults } } = this.props;
-    console.log(this.props.search);
-    
-    // getBeginsWith("\TART","ax")
-    // setTimeout(() => {
-    //   getBeginsWith("START","ax")
-    // }, 3000);
+    const { search: {searchText, searchResults, fetchedJob, fetchedJobDetail } } = this.props;
 
     return <Main>
+      <h4>What do you want to be?</h4>
       <AutoComplete 
         list={searchResults||[]} 
+        label={""}
         showList={true}
-        value="" 
+        value={searchText||""} 
         handleChange={this.handleChangeText} 
         itemMapper={(item) => ({label:item.suggestion, value: item.parent_uuid})}
+        handleSearch={this.handleClickOnTitle}
       />
-      {/* <SearchResults results={searchResults} /> */}
+      {/* <KeyWordSearch /> */}
+      {fetchedJob && fetchedJobDetail && <JobDetail searchJob={console.log} fetchedJobDetail={fetchedJobDetail} />}
     </Main>
   }
 }
