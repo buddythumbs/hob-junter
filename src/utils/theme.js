@@ -9,21 +9,23 @@ export const PALETTE = {
 }
 
 export const MUI_PALETTE = {
-    type: 'dark',
+    type: 'light',
     primary: {
-      main: "#65ccb8",
+      main: "#04A367",
     },
     secondary: {
-      main: "#182628",
+      main: "#DB8201",
     },
     error: {
-      main: "#529163",
+      main: "#B64201",
     },
     tonalOffset: 0.2,
     contrastThreshold: 3,
+    textColor: PALETTE.primary,
+    alternateTextColor: "#B64201",
 }
 
-export const createCustomTheme = (theme) => {
+export const createCustomTheme = () => {
     return createMuiTheme({
         typography: {
             useNextVariants: true,
@@ -32,9 +34,6 @@ export const createCustomTheme = (theme) => {
                 'Nanum Gothic Coding', 
                 'monospace', 
             ].join(',')
-        },
-        toolbar: {
-            height: 25,
         },
         palette: MUI_PALETTE
     })
