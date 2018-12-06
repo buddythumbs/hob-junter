@@ -35,11 +35,10 @@ class App extends Component {
             <CssBaseline/>
             <LayoutPage>
               <Switch>
-                <Route path="/about" component={<AboutPage/>} />
+                <Route path="/about" render={(props) => <AboutPage {...props}/>} />
                 <Route path="/contact" render={(props) => <ContactPage {...props}/>} />
                 <Route path="/search/:jobId" render={(props) => <JobPage {...props}/>} />
-                <Route path="/search/" render={(props) => <SearchPage {...props}/>} />
-                <Route render={(props) => <HomePage {...props}/>} />
+                <Route path="/" render={(props) => <SearchPage {...props}/>} />
               </Switch>
             </LayoutPage>
           </Fragment>
