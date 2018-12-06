@@ -14,15 +14,14 @@ export default class KeyWoordSearcher extends Component {
 
     return <TextField
       id="outlined-full-width"
-      label="Search Key Word in Job Title"
+      label="What do you want to be?"
       value={value}
       style={{ margin: 8 }}
       placeholder="Placeholder"
-      helperText="Full width!"
+      helperText="keywords"
       fullWidth
       onChange={onChange}
-      margin="normal"
-      variant="outlined"
+      margin="dense"
       InputLabelProps={{
         shrink: true,
       }}
