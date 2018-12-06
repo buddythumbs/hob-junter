@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -29,28 +29,37 @@ const styles = {
   },
 };
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar className={classes.root} position="static">
-        <Toolbar>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-                Hob Junter
-            </Typography>
-            <StyledLink  to="/search">
-              <Button color="inherit">Search</Button>
-            </StyledLink>
-            <StyledLink  to="/contact" >
-              <Button color="inherit">Contact</Button>
-            </StyledLink>
-            <StyledLink  to="/about" >
-              <Button color="inherit">About Us</Button>
-            </StyledLink>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class ButtonAppBar extends Component{
+  static propTypes = {
+    classes: PropTypes.shape({
+      root: PropTypes.object.isRequired,
+      grow: PropTypes.object.isRequired,
+      menuButton: PropTypes.object.isRequired
+    }).isRequired,
+    goTo: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired
+  }
+
+  render = () => {
+    const { classes, goTo, goBack } = this.props;
+
+    console.log(this.props);
+    
+    return (
+      <div className={classes.root}>
+        <AppBar className={classes.root} position="static">
+          <Toolbar>
+              <Typography onClick={() => goTo('/') }  variant="h6" color="inherit" className={classes.grow}>
+                  Hob Junter
+              </Typography>
+              <Button onClick={() => goTo('/search') } color="inherit">Search</Button>
+              <Button onClick={() => goTo('/contact') } color="inherit">Contact</Button>
+              <Button onClick={() => goTo('/about') } color="inherit">About Us</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 ButtonAppBar.propTypes = {
