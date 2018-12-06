@@ -9,14 +9,21 @@ const QUERY_PARAMATERS = {
 }
 
 const getTitleBasedOnString = (position,term) => {
-    console.log(position,term);
-    
     return axios({
         method: 'get',
         url: `${API_ROOT}/jobs/autocomplete?${QUERY_PARAMATERS[position]}="${term}"`,
     })
 }
 
+const getJobsBasedOnId = (id) => {
+    return axios({
+        method: 'get',
+        url: `${API_ROOT}/jobs/${id}`,
+    })
+}
+
 export const DAW_API = {
-    AUTOCOMPLETE: getTitleBasedOnString
+    AUTOCOMPLETE: getTitleBasedOnString,
+    SEARCH_JOBS_BY_ID: getJobsBasedOnId
+
 }
