@@ -2,8 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './Search';
 
+
+
 it('renders without crashing', () => {
+
+  const search = {
+    searchText: "",
+    searchResults: []
+  }
+
   const div = document.createElement('div');
-  ReactDOM.render(<Search />, div);
+  ReactDOM.render(<Search search={search}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
