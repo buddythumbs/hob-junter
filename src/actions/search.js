@@ -5,6 +5,11 @@ export const searchText = (text) => ({
     payload: text
 })
 
+export const searchId = (id) => ({
+    type: actions.SEARCH_JOB_ID,
+    payload: id
+})
+
 export const setSearchText = (text) => ({
     type: actions.SET_SEARCH_TEXT,
     payload: text
