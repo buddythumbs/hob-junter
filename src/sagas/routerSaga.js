@@ -1,10 +1,9 @@
 import { push, goBack } from 'connected-react-router'
-import { put, call, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery } from 'redux-saga/effects'
 import {actions} from '../utils/types';
 
 // Push Action Handler
 export function* go(action) {
-  console.log(action);
   yield put(push(action.payload))
 }
   // Go back handler
