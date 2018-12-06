@@ -15,15 +15,10 @@ import JobPage from './containers/JobPage';
 import LayoutPage from './containers/LayoutPage';
 import ContactPage from './containers/ContactPage';
 import AboutPage from './containers/AboutPage';
-
 // Styles
 import './index.css';
 import "typeface-nanum-gothic-coding";
 
-// Globals styles
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({})
 const muiTheme = createCustomTheme({
   paletteType: 'dark',
 });
@@ -40,11 +35,11 @@ class App extends Component {
             <CssBaseline/>
             <LayoutPage>
               <Switch>
-                <Route path="/about" render={(props) => <AboutPage {...props}/>} />
+                <Route path="/about" component={<AboutPage/>} />
                 <Route path="/contact" render={(props) => <ContactPage {...props}/>} />
                 <Route path="/search/:jobId" render={(props) => <JobPage {...props}/>} />
                 <Route path="/search/" render={(props) => <SearchPage {...props}/>} />
-                <Route path="/" render={(props) => <HomePage {...props}/>} />
+                <Route render={(props) => <HomePage {...props}/>} />
               </Switch>
             </LayoutPage>
           </Fragment>
@@ -54,4 +49,4 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(App);
+export default App;
