@@ -41,10 +41,7 @@ class ButtonAppBar extends Component{
   }
 
   render = () => {
-    const { classes, goTo, goBack } = this.props;
-
-    console.log(this.props);
-    
+    const { classes, goTo } = this.props;
     return (
       <div className={classes.root}>
         <AppBar className={classes.root} position="static">
@@ -52,7 +49,7 @@ class ButtonAppBar extends Component{
               <Typography onClick={() => goTo('/') }  variant="h6" color="inherit" className={classes.grow}>
                   Hob Junter
               </Typography>
-              <Button onClick={() => goTo('/search') } color="inherit">Search</Button>
+              <Button onClick={() => goTo('/search') } color="inherit">Home</Button>
               <Button onClick={() => goTo('/contact') } color="inherit">Contact</Button>
               <Button onClick={() => goTo('/about') } color="inherit">About Us</Button>
           </Toolbar>
