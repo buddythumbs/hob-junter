@@ -10,11 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
-import {
-    AllSubstringsIndexStrategy,
-    Search,
-    UnorderedSearchIndex,
-  } from 'js-search';
 import {MUI_PALETTE} from '../../utils/theme';
 
 
@@ -89,10 +84,8 @@ const Option = (props) => {
       buttonRef={props.innerRef}
       selected={props.isFocused}
       component="div"
-      dense
       style={{
         fontWeight: props.isSelected ? 500 : 400,
-        padding: '0 5px'
       }}
       {...props.innerProps}
     >
@@ -128,6 +121,7 @@ const ValueContainer = (props) => {
 const MultiValue = (props) => {
   return (
     <Chip
+      color="primary"
       tabIndex={-1}
       label={props.children}
       className={classNames(props.selectProps.classes.chip, {
@@ -149,6 +143,15 @@ const Menu = (props) => {
 
 
 class Complete extends React.Component {
+  static propTypes = {
+    list: PropTypes.array, 
+    itemMapper: PropTypes.func.isRequired, 
+    value: PropTypes.string.isRequired, 
+    handleChange: PropTypes.func.isRequired, 
+    handleSearch: PropTypes.func.isRequired, 
+    label: PropTypes.string.isRequired
+  }
+
   constructor(props){
     super(props)
     this.state = {}
@@ -163,7 +166,6 @@ class Complete extends React.Component {
     let _VALUE = _.find(_LIST, item => item.value === value)
     
     this.setState({
-      search: this.setSearch(_LIST),
       options: _LIST,
       value: _VALUE,
       handleChange,
@@ -172,6 +174,7 @@ class Complete extends React.Component {
   }
   
   static getDerivedStateFromProps = (props, state) => {
+    console.log(props);
     
     const { value, options } = state
 
@@ -183,6 +186,8 @@ class Complete extends React.Component {
         newState.value = _VALUE 
     }
 
+    console.log(newState);
+    
     // Update list
     if(!options || props.list.length !== options.length){
       newState.options = props.list.map(props.itemMapper)
@@ -190,17 +195,6 @@ class Complete extends React.Component {
 
     return newState
     
-  }
-
-  setSearch = (options) => {
-    // Prepare a searcher
-    const search = new Search('label')
-    search.searchIndex = new UnorderedSearchIndex()
-    search.indexStrategy = new AllSubstringsIndexStrategy()
-    search.addIndex('value')
-    search.addIndex('label')
-    search.addDocuments(options)
-    return search
   }
 
   handleInputChange = (inputValue) => {
@@ -218,21 +212,13 @@ class Complete extends React.Component {
     this.searchResults = null
   }
 
-  filter = (props) => {
-    const { showList } = this.props
-    // Looking up in the precomputed results
-    // console.log(props)
-    return this.searchResults ? this.searchResults.indexOf(props.data) > -1  : showList
-  }
-
   render() {
     const { options } = this.state;
-    const { classes, value, handleChange, label } = this.props;
+    const { classes, value, handleChange, label, handleSearch } = this.props;
     
     const selectStyles = {
       input: base => ({
         ...base,
-        color: MUI_PALETTE.primary,
         '& input': {
           font: 'inherit',
         },
@@ -242,15 +228,14 @@ class Complete extends React.Component {
 
     return (
       <Select
-        openMenuOnFocus={options.length >= 100 ? false : true}
-        openMenuOnClick={options.length >= 100 ? false : true}
+        openMenuOnFocus={false}
+        openMenuOnClick={false}
         placeholder="Search for keywords"
         classes={classes}
         styles={selectStyles}
         menuPortalTarget={document.body}
         options={options}
         onInputChange={handleChange}
-        filterOption={this.filter}
         components={{
             Control,
             Menu,
@@ -262,7 +247,7 @@ class Complete extends React.Component {
             ValueContainer,
           }}
         value={value}
-        onChange={(obj) => handleChange(obj.value) }
+        onChange={(obj) => handleSearch(obj.value) }
         textFieldProps={{
             margin: 'dense',
             label: label,
