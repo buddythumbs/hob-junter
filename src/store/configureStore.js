@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger'
+import { createLogger } from 'redux-logger';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 
@@ -13,11 +13,21 @@ import * as jobActions from '../actions/job';
 import * as searchActions from '../actions/search';
 
 // Sagas
-import searchSaga from '../sagas/searchSaga';
+import {searchKeywordSaga,searchJobSaga} from '../sagas/searchSaga';
+import {goBackSaga, pushSaga} from '../sagas/routerSaga';
+
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
+// For conneted router
 export const history = createBrowserHistory()
+
+// Logger setup
+
+const logger = createLogger({
+  level: 'info',
+  collapsed: true
+});
 
 export const configureStore = () => {
   // Redux Configuration
@@ -54,8 +64,11 @@ export const configureStore = () => {
     ),
   )
 
-  // then run the saga
-  sagaMiddleware.run(searchSaga)
+  // Run sagas
+  sagaMiddleware.run(searchKeywordSaga)
+  sagaMiddleware.run(searchJobSaga)
+  sagaMiddleware.run(goBackSaga)
+  sagaMiddleware.run(pushSaga)
 
   return store;
 };
