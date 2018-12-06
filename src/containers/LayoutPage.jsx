@@ -1,42 +1,45 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
-
 // Components
 import Header from '../components/Header/Header'
-
-// Styled Components
-const Layout = styled.div`
-    display: grid;
-    grid-template-rows: 5vh 95vh;
-    grid-template-columns: 1fr;
-    width: 100%;
-    height:100%;
-    background: url("../../public/assets/jpg/stock-2.jpg") no-repeat center center fixed;
-    background-size: cover;
-`;
-
-const Head = styled.div`
-    max-height: 5vh;
-`;
-
-const Content = styled.div`
-    color: #eee;;
-`;
+import { Layout, Head, Content } from '../elements/layouts';
+// Actions
+import * as routerActions from '../actions/router';
 
 
-export default class LayoutPage extends Component {
-  static propTypes = {
+
+class LayoutPage extends Component {
+    static propTypes = {
+        goTo: PropTypes.func.isRequired,
+        goBack: PropTypes.func.isRequired
+    }
+  
+    render() {
+      return <Layout>
+          <Head>
+              <Header goTo={this.props.goTo} goBack={this.props.goBack}/>
+          </Head>
+          <Content>
+              {this.props.children}
+          </Content>
+      </Layout>
+    }
   }
+  
 
-  render() {
-    return (<Layout>
-        <Head>
-            <Header />
-        </Head>
-        <Content>
-            {this.props.children}
-        </Content>
-    </Layout>)
-  }
+function mapStateToProps(state, props) {
+    return {}
 }
+  
+  
+  
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        ...routerActions
+    }, dispatch);
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LayoutPage));
