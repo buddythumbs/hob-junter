@@ -10,11 +10,17 @@ const initialState = {
 const search = (state=initialState,action) => {
     switch (action.type) {
         case actions.SET_SEARCH_TEXT:
-            return state = { searchText: action.payload }
+            return state = { ...state, searchText: action.payload }
         case actions.CLEAR_SEARCH:
-            return state = { searchText: '' }
+            return state = { ...state, searchText: '' }
+        case actions.FETCH_KEYWORDS:
+            return state = { ...state, loadingAutocomplete: true }
         case actions.FETCH_KEYWORDS_SUCCEEDED:
-            return state = { searchResults: action.payload }
+            return state = { ...state, searchResults: action.payload, loadingAutocomplete: false }
+        case actions.FETCH_JOBS:
+            return state = { ...state, fetchedJob: undefined, fetchedJob: false }
+        case actions.FETCH_JOBS_SUCCEEDED:
+            return state = { ...state, fetchedJobDetail: action.payload, fetchedJob: true }
         default:
             return state
     }
