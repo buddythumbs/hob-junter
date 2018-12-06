@@ -7,4 +7,6 @@ export const actions = {
     SEND_CONTACT: 'SEND_CONTACT',
     SET_RESULTS: 'SET_RESULTS',
     SEARCH_TEXT: 'SEARCH_TEXT',
+    GO_BACK: 'GO_BACK',
+    GO_TO_ROUTE: 'GO_TO_ROUTE',
 }
