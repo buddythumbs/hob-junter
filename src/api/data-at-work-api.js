@@ -22,8 +22,16 @@ const getJobsBasedOnId = (id) => {
     })
 }
 
+const getRelatedSkillsBasedOnJobId = (id) => {
+    return axios({
+        method: 'get',
+        url: `${API_ROOT}/jobs/${id}/related_skills`,
+    })
+}
+
 export const DAW_API = {
     AUTOCOMPLETE: getTitleBasedOnString,
-    SEARCH_JOBS_BY_ID: getJobsBasedOnId
+    SEARCH_JOBS_BY_ID: getJobsBasedOnId,
+    SEARCH_SKILLS_BY_JOB_ID: getRelatedSkillsBasedOnJobId
 
 }
