@@ -97,7 +97,7 @@ const Option = (props) => {
 const Placeholder = (props) => {
   return (
     <Typography
-      color="textSecondary"
+      color="textPrimary"
       className={props.selectProps.classes.placeholder}
       {...props.innerProps}
     >
@@ -118,21 +118,6 @@ const ValueContainer = (props) => {
   return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
 }
 
-const MultiValue = (props) => {
-  return (
-    <Chip
-      color="primary"
-      tabIndex={-1}
-      label={props.children}
-      className={classNames(props.selectProps.classes.chip, {
-        [props.selectProps.classes.chipFocused]: props.isFocused,
-      })}
-      onDelete={props.removeProps.onClick}
-      deleteIcon={<CancelIcon {...props.removeProps} />}
-    />
-  );
-}
-
 const Menu = (props) => {
   return (
     <Paper square className={props.selectProps.classes.paper} {...props.innerProps}>
@@ -149,72 +134,28 @@ class Complete extends React.Component {
     value: PropTypes.string.isRequired, 
     handleChange: PropTypes.func.isRequired, 
     handleSearch: PropTypes.func.isRequired, 
-    label: PropTypes.string.isRequired
+    error: PropTypes.bool,
+    errorMessage: PropTypes.string,
+    loading: PropTypes.bool,
   }
 
   constructor(props){
     super(props)
     this.state = {}
-    this.handleInputChange = this.handleInputChange.bind(this)
-  }
-  
-  componentDidMount = () => {
-    const { list, itemMapper, value, handleChange, label } = this.props
-    
-    const _LIST = list.map(itemMapper)
-    
-    let _VALUE = _.find(_LIST, item => item.value === value)
-    
-    this.setState({
-      options: _LIST,
-      value: _VALUE,
-      handleChange,
-      label,
-    })
-  }
-  
-  static getDerivedStateFromProps = (props, state) => {
-    console.log(props);
-    
-    const { value, options } = state
-
-    let newState = {}
-
-    // Update value
-    if(props.value !== value) {
-        const _VALUE = _.find(options, item => item.value === props.value)
-        newState.value = _VALUE 
-    }
-
-    console.log(newState);
-    
-    // Update list
-    if(!options || props.list.length !== options.length){
-      newState.options = props.list.map(props.itemMapper)
-    }
-
-    return newState
-    
-  }
-
-  handleInputChange = (inputValue) => {
-    const { search, options } = this.state
-
-    let test = 0
-    if(options.length >= 1000) test = 2
-    
-    if(inputValue && inputValue.length > test){
-      let results = search.search(inputValue)
-      // console.log(results)
-      this.searchResults = results
-      return
-    }
-    this.searchResults = null
   }
 
   render() {
-    const { options } = this.state;
-    const { classes, value, handleChange, label, handleSearch } = this.props;
+    const { 
+      error, 
+      errorMessage, 
+      classes, 
+      value, 
+      handleChange, 
+      handleSearch, 
+      list, 
+      itemMapper, 
+      loading 
+    } = this.props;
     
     const selectStyles = {
       input: base => ({
@@ -225,38 +166,41 @@ class Complete extends React.Component {
       }),
       menuPortal: base => ({ ...base, zIndex: 9999 })
     };
-
-    return (
-      <Select
+    console.log(this.props);
+    
+    return <Select
+        autoFocus={true}
+        value={value}
         openMenuOnFocus={false}
         openMenuOnClick={false}
         placeholder="Search for keywords"
+        loadingMessage={() => <text>Looking for matching titles...</text>}
+        noOptionsMessage={() => error ? <text>{errorMessage}</text>: <text>type keyword...</text>}
         classes={classes}
         styles={selectStyles}
+        captureMenuScroll={true}
+        escapeClearsValue={true}
+        isLoading={loading}
         menuPortalTarget={document.body}
-        options={options}
+        options={list ? list.map(itemMapper): []}
         onInputChange={handleChange}
         components={{
             Control,
             Menu,
-            MultiValue,
             NoOptionsMessage,
             Option,
             Placeholder,
             SingleValue,
             ValueContainer,
           }}
-        value={value}
-        onChange={(obj) => handleSearch(obj.value) }
-        textFieldProps={{
-            margin: 'dense',
-            label: label,
-            InputLabelProps: {
-                shrink: true,
-            },
-        }}
+        onChange={(obj) => handleSearch(obj) }
+        // textFieldProps={{
+        //     label: label,
+        //     InputLabelProps: {
+        //         shrink: true,
+        //     },
+        // }}
       />
-    );
   }
 }
 

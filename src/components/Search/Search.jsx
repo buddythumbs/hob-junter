@@ -18,11 +18,13 @@ export default class Search extends Component {
           parent_uuid: PropTypes.string.isRequired
         })
       ),
-      loadingAutocomplete: PropTypes.bool.isRequired
+      loadingAutocomplete: PropTypes.bool.isRequired,
+      fetchedJob: PropTypes.bool.isRequired,
+      error: PropTypes.bool,
+      errorMessage: PropTypes.string,
     }).isRequired,
     setSearchText: PropTypes.func.isRequired,
     searchId: PropTypes.func.isRequired,
-    fetchedJob: PropTypes.bool.isRequired,
     fetchedJobDetail: PropTypes.shape({
       description: PropTypes.string.isRequired,
       onet_soc_code: PropTypes.string.isRequired,
@@ -30,6 +32,17 @@ export default class Search extends Component {
         PropTypes.shape({
           uuid: PropTypes.string.isRequired,
           title: PropTypes.string.isRequired
+        })
+      ),
+      skills: PropTypes.arrayOf(
+        PropTypes.shape({
+          skill_uuid: PropTypes.string.isRequired,
+          skill_name: PropTypes.string.isRequired,
+          skill_type: PropTypes.string.isRequired,
+          description: PropTypes.string.isRequired,
+          normalized_skill_name: PropTypes.string.isRequired,
+          importance: PropTypes.number.isRequired,
+          level: PropTypes.number.isRequired
         })
       ),
       title: PropTypes.string.isRequired,
@@ -44,34 +57,37 @@ export default class Search extends Component {
 
   }
 
-  handleChangeText = (e) => {
-    
-    this.props.setSearchText(e)
+  handleChangeText = (e,type) => {
+    // console.log("hanlde change fired",type);
+    if(type.action === "input-change") {
+      this.props.setSearchText(e);
+    }
   }
-
-  handleClickOnTitle = (id) => {
-    
-    this.props.searchId(id)
-    this.props.setSearchText(id)
+  
+  handleClickOnTitle = (obj,meta) => {
+    this.props.searchId(obj.value)
+    this.props.setJobTitle(obj.value)
   }
 
   render() {
     
-    const { search: {searchText, searchResults, fetchedJob, fetchedJobDetail } } = this.props;
+    const { search: { error, errorMessage, searchText, searchResults, fetchedJob, fetchedJobDetail, loadingAutocomplete } } = this.props;
 
     return <Main>
       <h4>What do you want to be?</h4>
       <AutoComplete 
-        list={searchResults||[]} 
-        label={""}
+        list={searchResults} 
         showList={true}
-        value={searchText||""} 
-        handleChange={this.handleChangeText} 
+        loading={loadingAutocomplete}
+        value={searchText} 
+        error={error}
+        errorMessage={errorMessage}
+        handleChange={this.handleChangeText}
         itemMapper={(item) => ({label:item.suggestion, value: item.parent_uuid})}
         handleSearch={this.handleClickOnTitle}
       />
       {/* <KeyWordSearch /> */}
-      {fetchedJob && fetchedJobDetail && <JobDetail searchJob={console.log} fetchedJobDetail={fetchedJobDetail} />}
+      {fetchedJob && fetchedJobDetail && <JobDetail searchJob={this.handleClickOnTitle} fetchedJobDetail={fetchedJobDetail} />}
     </Main>
   }
 }

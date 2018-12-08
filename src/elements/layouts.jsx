@@ -34,3 +34,15 @@ export const Content = styled.div`
     max-height: 90vh;
     overflow-y: auto;
 `;
+
+// Job detail row
+export const DetailRow = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+`;
+
+export const DetailColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
