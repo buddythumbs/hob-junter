@@ -1,4 +1,6 @@
-import { actions } from '../utils/types';
+import {
+    actions
+} from '../utils/types';
 
 export const searchText = (text) => ({
     type: actions.SEARCH_TEXT,
@@ -8,6 +10,11 @@ export const searchText = (text) => ({
 export const searchId = (id) => ({
     type: actions.SEARCH_JOB_ID,
     payload: id
+})
+
+export const setJobTitle = (title) => ({
+    type: actions.SEARCH_JOB_TITLE,
+    payload: title
 })
 
 export const setSearchText = (text) => ({
