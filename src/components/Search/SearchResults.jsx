@@ -19,6 +19,6 @@ export default class SearchResult extends Component {
     render = () => {
         const { results } = this.props;
 
-        return <div>{results.length} resulsts returned</div>
+        return <div>{results.length} results returned</div>
     }
 }
