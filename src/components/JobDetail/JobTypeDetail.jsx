@@ -48,8 +48,7 @@ class JobTypeDetail extends Component {
     }
 
     render = () => {
-        const { fetchedJobDetail, searchJob } = this.props;
-        const bull = <span>•</span>;
+        const { fetchedJobDetail } = this.props;
         return (
           <Card >
             <CardContent>

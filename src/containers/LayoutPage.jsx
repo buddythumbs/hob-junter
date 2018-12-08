@@ -18,14 +18,12 @@ class LayoutPage extends Component {
     }
   
     render() {
-      return <Layout>
-          <Head>
-              <Header goTo={this.props.goTo} goBack={this.props.goBack}/>
-          </Head>
-          <Content>
-              {this.props.children}
-          </Content>
-      </Layout>
+        return <Layout>
+            <Header goTo={this.props.goTo} goBack={this.props.goBack}/>
+            <Content>
+                {this.props.children}
+            </Content>
+        </Layout>
     }
   }
   

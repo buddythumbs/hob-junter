@@ -17,21 +17,23 @@ export const Main = styled.div`
 
 // Layout Page
 export const Layout = styled.div`
-    display: grid;
-    grid-template-rows: 10vh 90vh;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-height:100vh;
-    background: url(${background}) no-repeat center center fixed;
-    background-size: cover;
 `;
 
 export const Head = styled.div`
-    max-height: 5vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    background: url(${background}) no-repeat center center fixed;
+    background-size: cover;
+    
 `;
 
 export const Content = styled.div`
-    max-height: 90vh;
     overflow-y: auto;
 `;
 
