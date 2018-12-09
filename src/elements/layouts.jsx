@@ -8,11 +8,16 @@ import background from "../assets/jpg/nature.jpg";
 export const Main = styled.div`
   color: ${MUI_PALETTE.primary.main};
   padding:20px 100px;
-  background-color: rgba(255,255,255,0.89);
   min-height: 50%;
   width: 90%;
   margin: auto;
   font-size: 1.3rem;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    background-color: white;
+    height: 100%;
+    padding:20px 20px;
+  }
 `;
 
 // Layout Page
@@ -20,17 +25,29 @@ export const Layout = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
+    /* On screens that are 600px or less, set the background color to olive */
+    @media screen and (max-width: 600px) {
+        background: url(${background}) no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+    }
 `;
 
 export const Head = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 200px;
+    height: 250px;
     background: url(${background}) no-repeat center center fixed;
     background-size: cover;
+    object-fit: cover;
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
     
 `;
+
 
 export const Content = styled.div`
     overflow-y: auto;
@@ -49,9 +66,14 @@ export const DetailColumn = styled.div`
 `;
 
 export const MainArea = styled.div`
-  padding-top: 20px;
-  width: 80%;
-  margin:auto;
+    padding:10px
+    padding-top: 20px;
+    width: 80%;
+    margin:auto;
+    @media screen and (max-width: 600px) {
+        width: 90%;
+        background-color: white;
+    }
 `;
 // Skill Line
 
@@ -69,6 +91,9 @@ export const SkillHeader = styled.div`
     grid-template-columns: 2fr 8fr;
     align-items: center;
     margin-bottom: 15px;
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const SkillName = styled.div`
