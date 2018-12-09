@@ -6,9 +6,6 @@ import { Head } from '../../elements/layouts';
 
 const Header = ({goTo}) =>
   <Head>
-    <Button size="large" variant="contained" onClick={() => goTo('/search') } color="primary">Search (Combined)</Button>
-    <Button size="large" variant="contained" onClick={() => goTo('/contact') } color="primary">Search</Button>
-    <Button size="large" variant="contained" onClick={() => goTo('/about') } color="primary">Detail</Button>
   </Head>
 
 Header.propTypes = {

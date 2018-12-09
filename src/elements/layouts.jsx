@@ -10,7 +10,7 @@ export const Main = styled.div`
   padding:20px 100px;
   background-color: rgba(255,255,255,0.89);
   min-height: 50%;
-  width: 70%;
+  width: 90%;
   margin: auto;
   font-size: 1.3rem;
 `;
@@ -20,7 +20,6 @@ export const Layout = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-height:100vh;
 `;
 
 export const Head = styled.div`

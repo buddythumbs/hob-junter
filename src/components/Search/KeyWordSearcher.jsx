@@ -14,17 +14,11 @@ export default class KeyWoordSearcher extends Component {
 
     return <TextField
       id="outlined-full-width"
-      label="What do you want to be?"
       value={value}
-      style={{ margin: 8 }}
-      placeholder="Placeholder"
-      helperText="keywords"
+      placeholder="'developer' or 'ninja'"
       fullWidth
-      onChange={onChange}
+      onChange={(e) => onChange(e.target.value)}
       margin="dense"
-      InputLabelProps={{
-        shrink: true,
-      }}
     />
   }
 }

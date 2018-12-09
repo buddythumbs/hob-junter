@@ -15,7 +15,7 @@ const search = (state=initialState,action) => {
         case actions.SEARCH_JOB_TITLE:
             return state = { ...state, searchTitle: action.payload }
         case actions.CLEAR_SEARCH:
-            return state = { ...state, searchText: '', searchResults: undefined }
+            return state = { ...state, searchText: '', searchResults: [] }
         case actions.FETCH_KEYWORDS:
             return state = { 
                 ...state, 
@@ -39,8 +39,16 @@ const search = (state=initialState,action) => {
         case actions.FETCH_JOBS:
             return state = { 
                 ...state, 
-                fetchedJob: undefined, 
                 fetchedJob: false, 
+                fetchingJob: true, 
+                errorMessage: '', 
+                error: false 
+            }
+        case actions.FETCH_JOBS_FAILED:
+            return state = { 
+                ...state, 
+                fetchedJob: false, 
+                fetchingJob: false, 
                 errorMessage: action.payload, 
                 error: true 
             }
@@ -49,6 +57,7 @@ const search = (state=initialState,action) => {
                 ...state, 
                 fetchedJobDetail: action.payload, 
                 fetchedJob: true, 
+                fetchingJob: false
             }   
         default:
             return state

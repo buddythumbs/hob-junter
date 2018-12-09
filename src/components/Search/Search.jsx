@@ -58,15 +58,7 @@ export default class Search extends Component {
   }
 
   handleChangeText = (e,type) => {
-    // console.log("hanlde change fired",type);
-    if(type.action === "input-change") {
-      this.props.setSearchText(e);
-    }
-  }
-  
-  handleClickOnTitle = (obj,meta) => {
-    this.props.searchId(obj.value)
-    this.props.setJobTitle(obj.value)
+    this.props.setSearchText(e);
   }
 
   render() {
@@ -75,19 +67,17 @@ export default class Search extends Component {
 
     return <Main>
       <h4>What do you want to be?</h4>
-      <AutoComplete 
-        list={searchResults} 
-        showList={true}
-        loading={loadingAutocomplete}
-        value={searchText} 
-        error={error}
-        errorMessage={errorMessage}
-        handleChange={this.handleChangeText}
-        itemMapper={(item) => ({label:item.suggestion, value: item.parent_uuid})}
-        handleSearch={this.handleClickOnTitle}
-      />
-      {/* <KeyWordSearch /> */}
-      {fetchedJob && fetchedJobDetail && <JobDetail searchJob={this.handleClickOnTitle} fetchedJobDetail={fetchedJobDetail} />}
+      <KeyWordSearch value={searchText} onChange={this.handleChangeText} />
+      {searchResults && searchResults.length && 
+        <SearchResults 
+          searchText={searchText}
+          results={searchResults} 
+          loading={loadingAutocomplete} 
+          error={error} 
+          errorMessage={errorMessage}
+          goTo={this.props.goTo}
+        />
+      }
     </Main>
   }
 }
