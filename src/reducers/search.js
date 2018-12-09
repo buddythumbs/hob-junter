@@ -34,7 +34,8 @@ const search = (state=initialState,action) => {
                 ...state, 
                 loadingAutocomplete: false, 
                 errorMessage: action.payload, 
-                error: true 
+                error: true ,
+                searchResults: undefined
             }
         case actions.FETCH_JOBS:
             return state = { 
