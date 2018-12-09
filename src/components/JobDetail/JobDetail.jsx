@@ -5,11 +5,7 @@ import styled from 'styled-components';
 // Components
 import JobTypeDetail from './JobTypeDetail'
 import { LinearProgress } from '@material-ui/core';
-
-const MainArea = styled.div`
-  width: 80%;
-  margin:auto;
-`;
+import { MainArea } from '../../elements/layouts';
 
 export default class JobDetail extends Component {
   static propTypes = {
@@ -61,7 +57,6 @@ export default class JobDetail extends Component {
     if(fetchingJob) return <LinearProgress />
     return (
       <MainArea>
-        
         {fetchedJob && fetchedJobDetail && <JobTypeDetail goBack={this.props.goBack} fetchedJobDetail={fetchedJobDetail} />}
       </MainArea> 
     )
