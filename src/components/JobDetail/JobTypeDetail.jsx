@@ -49,35 +49,35 @@ class JobTypeDetail extends Component {
     render = () => {
         const { fetchedJobDetail } = this.props;
         return <Fragment>
-            <Typography variant="p" component="h2">
+            <h3>
               {fetchedJobDetail.title}
-            </Typography>
+            </h3>
             <p style={{padding: 10}}>
               {fetchedJobDetail.description}
             </p>
             <Button color="primary" onClick={this.props.goBack}><Back fontSize="small"/>Back to search</Button>
-          <Typography variant="p" component="h2">
+          <h3>
             Related Titles
-          </Typography>
+          </h3>
             <DetailRow>
               {_.map(
                 _.take(
                   fetchedJobDetail.related_job_titles,
                   5
                   ),
-                title => <Chip color="primary" key={title.uuid} label={title.title} style={{margin: 8}} />
+                title => <Chip style={{fontSize: '1.2em'}} color="primary" variant="outlined" key={title.uuid} label={title.title} style={{margin: 8}} />
               )}
             </DetailRow>
-          <Typography variant="p" component="h2">
+          <h3>
             Related Skills
-          </Typography>
+          </h3>
             <DetailRow>
               {_.map(
                 _.take(
                   fetchedJobDetail.skills.sort((a,b) => a.importance > b.importance ? -1 : a.importance > b.importance ? 1 : 0),
                   10
                   ),
-                skill => <Skill {...skill}/>
+                skill => <Skill style={{margin: 15}} {...skill}/>
               )}
             </DetailRow>
         </Fragment>
