@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![](Dec-09-2018 21-24-46.gif)
 
 ## Specification
 
