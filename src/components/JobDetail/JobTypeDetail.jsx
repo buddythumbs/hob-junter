@@ -64,7 +64,7 @@ class JobTypeDetail extends Component {
                   fetchedJobDetail.related_job_titles,
                   5
                   ),
-                title => <Chip style={{fontSize: '1.2em', margin: 8}} color="primary" variant="outlined" key={title.uuid} label={title.title}/>
+                title => <Chip style={{fontWeight: 900, margin: 8}} color="primary" variant="outlined" key={title.uuid} label={title.title}/>
               )}
             </DetailRow>
           <h3>
