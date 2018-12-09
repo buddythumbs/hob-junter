@@ -1,22 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { LinearProgress, Tooltip } from '@material-ui/core';
+import _ from 'lodash';
 
 // Components
+import { LinearProgress } from '@material-ui/core';
 
+// Components
+import {SkillLine, SkillElement, SkillELementFirst, SkillHeader, SkillName } from '../../elements/layouts';
 
 const Skill = ({ skill_name, description, importance, level }) =>
-  <div style={{width: '100%'}}>
-    <h4>{skill_name}</h4>
-    <p>{description}</p>  
-    <p>Importance</p>
-    <Tooltip title={importance}>
-        <LinearProgress style={{marginBottom: 5}} variant="determinate" color="secondary" value={importance*10} />
-    </Tooltip>
-    <p>Level required</p>
-    <Tooltip title={level}>
-        <LinearProgress style={{marginBottom: 5}} variant="determinate" color="secondary"  value={level*10} />
-    </Tooltip>
+  <div style={{width: '100%', margin: 20}}>
+    <SkillHeader>
+        <SkillName>{_.startCase(skill_name)}</SkillName>
+        <span>{description}</span>
+    </SkillHeader>
+    <SkillLine>
+        <SkillELementFirst>Importance</SkillELementFirst>
+        <div>
+            <LinearProgress variant="buffer" style={{marginBottom: 5}} variant="determinate" color="secondary" value={importance*10} valueBuffer={0} />
+        </div>
+        <SkillElement>{importance}</SkillElement>
+    </SkillLine>
+    <SkillLine>
+        <SkillELementFirst>Level required</SkillELementFirst>
+        <div>
+            <LinearProgress style={{marginBottom: 5}} variant="determinate" color="secondary"  value={level*10} />
+        </div>
+        <SkillElement>{level}</SkillElement>
+    </SkillLine>
   </div>
 
 Skill.propTypes = {
