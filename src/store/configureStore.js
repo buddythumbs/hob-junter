@@ -9,7 +9,6 @@ import { routerMiddleware } from 'connected-react-router';
 import rootReducer from '../reducers';
 
 // Actions
-import * as jobActions from '../actions/job';
 import * as searchActions from '../actions/search';
 
 // Sagas
@@ -38,7 +37,6 @@ export const configureStore = () => {
 
   // Redux DevTools Configuration
   const actionCreators = {
-    ...jobActions,
     ...searchActions,
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

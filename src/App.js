@@ -35,9 +35,7 @@ class App extends Component {
             <CssBaseline/>
             <LayoutPage>
               <Switch>
-                <Route path="/about" render={(props) => <AboutPage {...props}/>} />
-                <Route path="/contact" render={(props) => <ContactPage {...props}/>} />
-                <Route path="/search/:jobId" render={(props) => <JobPage {...props}/>} />
+                <Route path="/jobs/:jobId" render={(props) => <JobPage {...props}/>} />
                 <Route path="/" render={(props) => <SearchPage {...props}/>} />
               </Switch>
             </LayoutPage>
