@@ -1,15 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ![](https://github.com/buddythumbs/hob-junter/blob/master/Dec-09-2018%2021-24-46.gif)
-
+DEMO SITE: http://buddythumbs.github.io/hob-junter 
 ## Specification
 
 Create a single page application using the dataatwork.org open API
 
 API Documentation
 https://any-api.com/dataatwork_org/dataatwork_org/docs/API_Description
-
-DEMO SITE: http://buddythumbs.github.io/hob-junter 
 
 ## Requirements
 This app should contain two views:
