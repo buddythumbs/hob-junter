@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Constants foe API
-const API_ROOT = "http://api.dataatwork.org/v1";
+const API_ROOT = "//api.dataatwork.org/v1";
 const QUERY_PARAMATERS = {
     "START": 'begins_with',
     "ANYWHERE": 'contains',
