@@ -1,6 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ![](https://github.com/buddythumbs/hob-junter/blob/master/Dec-09-2018%2021-24-46.gif)
+
 DEMO SITE: http://buddythumbs.github.io/hob-junter 
 ## Specification
 
