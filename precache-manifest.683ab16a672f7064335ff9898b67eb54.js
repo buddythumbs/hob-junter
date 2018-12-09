@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/hob-junter/static/media/nature.216b6329.jpg"
   },
   {
-    "revision": "34c8143f3ddbc318381d",
+    "revision": "3882f96c424a0975e2f4",
     "url": "/hob-junter/static/css/main.4bffdb72.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/hob-junter/static/js/runtime~main.b4124885.js"
   },
   {
-    "revision": "34c8143f3ddbc318381d",
-    "url": "/hob-junter/static/js/main.34c8143f.chunk.js"
+    "revision": "3882f96c424a0975e2f4",
+    "url": "/hob-junter/static/js/main.3882f96c.chunk.js"
   },
   {
     "revision": "7b9bb32d1210eda93e4bfbc63e3bf2a9",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/hob-junter/static/css/1.a78b8a4c.chunk.css"
   },
   {
-    "revision": "fa508894d873f5bae6e0a86d12d761ed",
+    "revision": "d69bf30fe846b173ffdc2e40cddd3247",
     "url": "/hob-junter/index.html"
   }
 ];

@@ -1,7 +1,7 @@
 {
   "main.css": "/hob-junter/static/css/main.4bffdb72.chunk.css",
-  "main.js": "/hob-junter/static/js/main.34c8143f.chunk.js",
-  "main.js.map": "/hob-junter/static/js/main.34c8143f.chunk.js.map",
+  "main.js": "/hob-junter/static/js/main.3882f96c.chunk.js",
+  "main.js.map": "/hob-junter/static/js/main.3882f96c.chunk.js.map",
   "static/css/1.a78b8a4c.chunk.css": "/hob-junter/static/css/1.a78b8a4c.chunk.css",
   "static/js/1.9ed58f17.chunk.js": "/hob-junter/static/js/1.9ed58f17.chunk.js",
   "static/js/1.9ed58f17.chunk.js.map": "/hob-junter/static/js/1.9ed58f17.chunk.js.map",
@@ -12,6 +12,6 @@
   "static/css/main.4bffdb72.chunk.css.map": "/hob-junter/static/css/main.4bffdb72.chunk.css.map",
   "static/css/1.a78b8a4c.chunk.css.map": "/hob-junter/static/css/1.a78b8a4c.chunk.css.map",
   "index.html": "/hob-junter/index.html",
-  "precache-manifest.b1fdef6a829aff549fb3d57897a7e6f4.js": "/hob-junter/precache-manifest.b1fdef6a829aff549fb3d57897a7e6f4.js",
+  "precache-manifest.683ab16a672f7064335ff9898b67eb54.js": "/hob-junter/precache-manifest.683ab16a672f7064335ff9898b67eb54.js",
   "service-worker.js": "/hob-junter/service-worker.js"
 }
