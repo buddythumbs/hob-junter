@@ -24,7 +24,7 @@ const Skill = ({ skill_name, description, importance, level }) =>
     <SkillLine>
         <SkillELementFirst>Level required</SkillELementFirst>
         <div>
-            <LinearProgress style={{marginBottom: 5}} variant="buffer" color="secondary"  value={level*10} />
+            <LinearProgress style={{marginBottom: 5}} variant="buffer" color="secondary"  value={level*10} valueBuffer={0}/>
         </div>
         <SkillElement>{level}</SkillElement>
     </SkillLine>
@@ -41,7 +41,7 @@ Skill.propTypes = {
             importance: PropTypes.number.isRequired,
             level: PropTypes.number.isRequired
         })
-        ),
+    ),
 };
 
 export default Skill;

@@ -3,12 +3,11 @@ import { bindActionCreators } from 'redux';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
+
 // Components
 import { Layout, Content } from '../elements/layouts';
 // Actions
 import * as routerActions from '../actions/router';
-
-
 
 class LayoutPage extends Component {
     static propTypes = {

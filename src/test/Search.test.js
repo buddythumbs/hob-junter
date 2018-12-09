@@ -6,12 +6,19 @@ import Search from '../components/Search/Search';
 
 it('renders without crashing', () => {
 
-  const search = {
-    searchText: "",
-    searchResults: []
+  const mockProps = {
+    search : {
+      searchText: "",
+      searchResults: [],
+      loadingAutocomplete: false,
+      fetchedJob: false
+    },
+    searchId: () => undefined,
+    searchText: () => undefined,
+    setSearchText: () => undefined
   }
 
   const div = document.createElement('div');
-  ReactDOM.render(<Search search={search}/>, div);
+  ReactDOM.render(<Search {...mockProps}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -76,7 +76,7 @@ class JobTypeDetail extends Component {
                   fetchedJobDetail.skills.sort((a,b) => a.importance > b.importance ? -1 : a.importance > b.importance ? 1 : 0),
                   10
                   ),
-                skill => <Skill style={{margin: 15}} {...skill}/>
+                skill => <Skill key={skill.skill_uuid} style={{margin: 15}} {...skill}/>
               )}
             </DetailRow>
         </Fragment>

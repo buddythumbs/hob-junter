@@ -14,7 +14,6 @@ export default class SearchResult extends Component {
             })
         ),
         searchText: PropTypes.string.isRequired,
-        loadingAutocomplete: PropTypes.bool.isRequired,
         goTo: PropTypes.func.isRequired,
     }
 
