@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/hob-junter/static/css/main.4bffdb72.chunk.css"
   },
   {
-    "revision": "ed47b505e2c25f60f209453333bcff04",
-    "url": "/hob-junter/static/media/nanum-gothic-coding-latin-700.ed47b505.woff"
+    "revision": "ecdd8cc51a128d237a628522b397a846",
+    "url": "/hob-junter/static/media/nanum-gothic-coding-latin-400.ecdd8cc5.woff"
   },
   {
     "revision": "9ed58f179a86722cc856",
@@ -24,16 +24,16 @@ self.__precacheManifest = [
     "url": "/hob-junter/static/js/main.9e706282.chunk.js"
   },
   {
-    "revision": "c5be872a50ba2e1f9834a3d1ee6ab105",
-    "url": "/hob-junter/static/media/nanum-gothic-coding-latin-400.c5be872a.woff2"
-  },
-  {
     "revision": "7b9bb32d1210eda93e4bfbc63e3bf2a9",
     "url": "/hob-junter/static/media/nanum-gothic-coding-latin-700.7b9bb32d.woff2"
   },
   {
-    "revision": "ecdd8cc51a128d237a628522b397a846",
-    "url": "/hob-junter/static/media/nanum-gothic-coding-latin-400.ecdd8cc5.woff"
+    "revision": "c5be872a50ba2e1f9834a3d1ee6ab105",
+    "url": "/hob-junter/static/media/nanum-gothic-coding-latin-400.c5be872a.woff2"
+  },
+  {
+    "revision": "ed47b505e2c25f60f209453333bcff04",
+    "url": "/hob-junter/static/media/nanum-gothic-coding-latin-700.ed47b505.woff"
   },
   {
     "revision": "9ed58f179a86722cc856",

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/hob-junter/precache-manifest.0e30b98f97b081451052ed4e4145cff5.js"
+  "/hob-junter/precache-manifest.3439a831869958aa2bdc541c807c4261.js"
 );
 
 workbox.clientsClaim();
