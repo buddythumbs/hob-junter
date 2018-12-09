@@ -91,7 +91,6 @@ All components have `PropTypes` set in order to properly document the expected p
     │   └── layouts.jsx
     ├── index.css
     ├── index.js
-    ├── logo.svg
     ├── reducers
     │   ├── index.js
     │   └── search.js
