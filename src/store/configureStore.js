@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 
 // Reducers
@@ -19,7 +19,7 @@ import {goBackSaga, pushSaga} from '../sagas/routerSaga';
 const sagaMiddleware = createSagaMiddleware()
 
 // For conneted router
-export const history = createBrowserHistory()
+export const history = createHashHistory()
 
 // Logger setup
 

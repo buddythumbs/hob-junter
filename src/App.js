@@ -27,7 +27,7 @@ const store = configureStore()
 class App extends Component {
   render() {
     return <Provider store={store}>
-      <ConnectedRouter history={history}>
+      <ConnectedRouter basename={process.env.PUBLIC_URL} history={history}>
         <MuiThemeProvider theme={muiTheme}>
           <Fragment>
             <CssBaseline/>
