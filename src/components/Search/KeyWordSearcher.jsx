@@ -15,7 +15,7 @@ export default class KeyWoordSearcher extends Component {
     return <TextField
       id="outlined-full-width"
       value={value}
-      placeholder="'developer' or 'ninja'"
+      placeholder="'developer' or 'teacher'"
       fullWidth
       onChange={(e) => onChange(e.target.value)}
       margin="dense"
