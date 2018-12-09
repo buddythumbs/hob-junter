@@ -47,3 +47,47 @@ export const DetailColumn = styled.div`
     display: flex;
     flex-direction: column;
 `;
+
+export const MainArea = styled.div`
+  padding-top: 20px;
+  width: 80%;
+  margin:auto;
+`;
+// Skill Line
+
+export const SkillLine = styled.div`
+    height: 25px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: auto;
+    border: 1px solid transparent;
+`;
+
+export const SkillHeader = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    align-items: center;
+    margin-bottom: 15px;
+`;
+
+export const SkillName = styled.div`
+    font-weight: bold;
+    color: ${MUI_PALETTE.primary.main};
+`;
+
+export const SkillElement = styled.div`
+    position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+`;
+
+export const SkillELementFirst = styled.div`
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+`;
