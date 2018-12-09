@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
 
 // Components
 import JobTypeDetail from './JobTypeDetail'
@@ -14,36 +13,38 @@ export default class JobDetail extends Component {
         jobId: PropTypes.string.isRequired
       })
     }),
-    fetchedJobDetail: PropTypes.shape({
-      description: PropTypes.string.isRequired,
-      onet_soc_code: PropTypes.string.isRequired,
-      related_job_titles: PropTypes.arrayOf(
-        PropTypes.shape({
-          uuid: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired
-        })
-      ),
-      skills: PropTypes.arrayOf(
-        PropTypes.shape({
-          skill_uuid: PropTypes.string.isRequired,
-          skill_name: PropTypes.string.isRequired,
-          skill_type: PropTypes.string.isRequired,
-          description: PropTypes.string.isRequired,
-          normalized_skill_name: PropTypes.string.isRequired,
-          importance: PropTypes.number.isRequired,
-          level: PropTypes.number.isRequired
-        })
-      ),
-      title: PropTypes.string.isRequired,
-      unusual_job_titles: PropTypes.arrayOf(
-        PropTypes.shape({
-          uuid: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired
-        })
-      ),
-      uuid: PropTypes.string.isRequired
+    search: PropTypes.shape({
+      fetchedJobDetail: PropTypes.shape({
+        description: PropTypes.string.isRequired,
+        onet_soc_code: PropTypes.string.isRequired,
+        related_job_titles: PropTypes.arrayOf(
+          PropTypes.shape({
+            uuid: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired
+          })
+        ),
+        skills: PropTypes.arrayOf(
+          PropTypes.shape({
+            skill_uuid: PropTypes.string.isRequired,
+            skill_name: PropTypes.string.isRequired,
+            skill_type: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            normalized_skill_name: PropTypes.string.isRequired,
+            importance: PropTypes.number.isRequired,
+            level: PropTypes.number.isRequired
+          })
+        ),
+        title: PropTypes.string.isRequired,
+        unusual_job_titles: PropTypes.arrayOf(
+          PropTypes.shape({
+            uuid: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired
+          })
+        ),
+        uuid: PropTypes.string.isRequired
+      }),
+      fetchedJob: PropTypes.bool
     }),
-    fetchedJob: PropTypes.bool
   }
 
   componentDidMount = () => {

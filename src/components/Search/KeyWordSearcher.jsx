@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-export default class KeyWoordSearcher extends Component {
+export default class KeyWordSearcher extends Component {
   static propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
+    value: PropTypes.string,
+    onChange: PropTypes.func
   }
 
   render() {

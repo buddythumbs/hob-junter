@@ -1,5 +1,6 @@
 {
   "name": "hob-junter",
+  "homepage" : "http://buddythumbs.github.io/hob-junter",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

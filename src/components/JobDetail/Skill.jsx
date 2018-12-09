@@ -17,14 +17,14 @@ const Skill = ({ skill_name, description, importance, level }) =>
     <SkillLine>
         <SkillELementFirst>Importance</SkillELementFirst>
         <div>
-            <LinearProgress variant="buffer" style={{marginBottom: 5}} variant="determinate" color="secondary" value={importance*10} valueBuffer={0} />
+            <LinearProgress variant="buffer" style={{marginBottom: 5}} color="secondary" value={importance*10} valueBuffer={0} />
         </div>
         <SkillElement>{importance}</SkillElement>
     </SkillLine>
     <SkillLine>
         <SkillELementFirst>Level required</SkillELementFirst>
         <div>
-            <LinearProgress style={{marginBottom: 5}} variant="determinate" color="secondary"  value={level*10} />
+            <LinearProgress style={{marginBottom: 5}} variant="buffer" color="secondary"  value={level*10} />
         </div>
         <SkillElement>{level}</SkillElement>
     </SkillLine>

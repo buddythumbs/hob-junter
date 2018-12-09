@@ -1,4 +1,4 @@
-import { call, put, takeLatest, throttle } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import {actions} from '../utils/types';
 import {DAW_API} from '../api/data-at-work-api';
 

@@ -9,12 +9,10 @@ import { configureStore, history } from './store/configureStore';
 import { createCustomTheme } from './utils/theme';
 
 // Container
-import HomePage from './containers/HomePage';
 import SearchPage from './containers/SearchPage';
 import JobPage from './containers/JobPage';
 import LayoutPage from './containers/LayoutPage';
-import ContactPage from './containers/ContactPage';
-import AboutPage from './containers/AboutPage';
+
 // Styles
 import './index.css';
 import "typeface-nanum-gothic-coding";

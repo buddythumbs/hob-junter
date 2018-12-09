@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 // Components
-import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import { DetailRow} from '../../elements/layouts';
 import Button from '@material-ui/core/Button';
@@ -65,7 +64,7 @@ class JobTypeDetail extends Component {
                   fetchedJobDetail.related_job_titles,
                   5
                   ),
-                title => <Chip style={{fontSize: '1.2em'}} color="primary" variant="outlined" key={title.uuid} label={title.title} style={{margin: 8}} />
+                title => <Chip style={{fontSize: '1.2em', margin: 8}} color="primary" variant="outlined" key={title.uuid} label={title.title}/>
               )}
             </DetailRow>
           <h3>

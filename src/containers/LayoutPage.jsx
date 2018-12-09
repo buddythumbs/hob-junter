@@ -4,8 +4,7 @@ import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 // Components
-import Header from '../components/Header/Header'
-import { Layout, Head, Content } from '../elements/layouts';
+import { Layout, Content } from '../elements/layouts';
 // Actions
 import * as routerActions from '../actions/router';
 
@@ -19,7 +18,7 @@ class LayoutPage extends Component {
   
     render() {
         return <Layout>
-            <Header goTo={this.props.goTo} goBack={this.props.goBack}/>
+            <div></div>
             <Content>
                 {this.props.children}
             </Content>

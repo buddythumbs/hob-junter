@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 // Conponents
 import KeyWordSearch from './KeyWordSearcher';
 import SearchResults from './SearchResults';
-import AutoComplete from './AutoComplete';
-import JobDetail from '../JobDetail/JobTypeDetail';
 import { Main } from '../../elements/layouts';
 import { LinearProgress } from '@material-ui/core';
 
