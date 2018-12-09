@@ -8,6 +8,8 @@ Create a single page application using the dataatwork.org open API
 API Documentation
 https://any-api.com/dataatwork_org/dataatwork_org/docs/API_Description
 
+DEMO SITE: http://buddythumbs.github.io/hob-junter 
+
 ## Requirements
 This app should contain two views:
     1. Job search view
@@ -22,6 +24,7 @@ This app should contain two views:
         - Top 10 related skills
 
 ## Deliverables
+
     1. A URL to a publicly available source code repository on Github (this repo) 
     2. A URL to the publicly available final build on Github pages, AWS S3 or a similar service
 
@@ -30,43 +33,87 @@ This app should contain two views:
 Project will use `redux` for state management in addition to `react-router` for routing to both views.
 The actions, reducers and store directories are all boilerplate for redux.
 
+The sagas directory is included as `react-saga` will be used to make for better async store management
 
-The sagas directory is included as `react-saga` will be used to make for better async manmagement store management
-The selectors directory is included as the project will use `reselect` to avoid unecessary expensive re rendering of the application
+Test coverage is minimal and covers very basic "component does render" tests.
+Enzyme and Jest combined could be used to properly test react components given time.
+
+All components have `PropTypes` set in order to properly document the expected props structure.
 
 ```
 ├── README.md
+├── archi-diagram.xml
+├── build
+│   ├── asset-manifest.json
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   ├── precache-manifest.82cb65d1999ea11f42a4eef4707a1cf2.js
+│   ├── service-worker.js
+│   └── static
+│       ├── css
+│       ├── js
+│       └── media
+├── diagrams
+│   └── system-context-diagram.png
 ├── package-lock.json
 ├── package.json
 ├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
 └── src
     ├── App.js
-    ├── App.test.js
     ├── actions
-    │   ├── job.js
-    │   └── search.js
+    │   ├── about.js
+    │   ├── contact.js
+    │   ├── router.js
+    │   └── search.js
+    ├── api
+    │   └── data-at-work-api.js
+    ├── assets
+    │   └── jpg
     ├── components
-    │   ├── JobDetail.jsx
-    │   └── Search.jsx
+    │   ├── About
+    │   ├── Contact
+    │   ├── Home
+    │   ├── JobDetail
+    │   └── Search
     ├── containers
-    │   ├── JobPage.jsx
-    │   └── SearchPage.jsx
+    │   ├── AboutPage.jsx
+    │   ├── ContactPage.jsx
+    │   ├── HomePage.jsx
+    │   ├── JobPage.jsx
+    │   ├── LayoutPage.jsx
+    │   └── SearchPage.jsx
+    ├── elements
+    │   ├── components.jsx
+    │   └── layouts.jsx
     ├── index.css
     ├── index.js
     ├── logo.svg
     ├── reducers
-    │   ├── index.js
-    │   ├── job.js
-    │   └── search.js
+    │   ├── index.js
+    │   └── search.js
     ├── sagas
-    ├── selectors
+    │   ├── routerSaga.js
+    │   └── searchSaga.js
     ├── serviceWorker.js
     ├── store
-    │   └── configureStore.js
+    │   └── configureStore.js
+    ├── test
+    │   ├── About.test.js
+    │   ├── App.test.js
+    │   ├── Contact.test.js
+    │   ├── Home.test.js
+    │   ├── JobDetail.test.js
+    │   ├── JobTypeDetail.test.js
+    │   ├── KeyWordSearcher.test.js
+    │   ├── SKill.test.js
+    │   ├── Search.test.js
+    │   └── SearchResults.test.js
     └── utils
+        ├── memoize.js
         ├── theme.js
         └── types.js
 ```
